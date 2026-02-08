@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First LIFF</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    <h1>Hello LIFF!</h1>
+    <p id="status">กำลังโหลด...</p>
+
+    <script>
+        async function initLIFF() {
+            try {
+                // 2. ใส่ LIFF ID ที่ได้จาก Console
+                await liff.init({ liffId: "2009070261-Z5i0gVYqf" }); 
+                
+                if (liff.isLoggedIn()) {
+                    document.getElementById("status").innerText = "Login เรียบร้อยแล้ว!";
+                } else {
+                    liff.login();
+                }
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาด:", error);
+            }
+        }
+        initLIFF();
+    </script>
+</body>
+</html>
